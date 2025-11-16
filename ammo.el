@@ -1,6 +1,8 @@
-;;; ammo.el - Automatic Manager for Modes -*- lexical-binding: t; -*-
+;;; ammo.el - Automatic function runner for Emacs -*- lexical-binding: t; -*-
 
 ;; Author: Arcensyl <dev@arcensyl.me>
+;; URL: https://github.com/arcensyl/ammo
+;; Created: November 16, 2025
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "28.1"))
 ;; Keywords: convenience
