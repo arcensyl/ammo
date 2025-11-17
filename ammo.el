@@ -2,7 +2,7 @@
 
 ;; Author: Arcensyl <dev@arcensyl.me>
 ;; URL: https://github.com/arcensyl/ammo
-;; Created: November 16, 2025
+;; Created: November 15, 2025
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "28.1"))
 ;; Keywords: convenience
