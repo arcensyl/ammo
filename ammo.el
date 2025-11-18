@@ -13,7 +13,7 @@
 
 ;; TODO: Write documentation.
 
-(require 'cl-lib) ;; TODO: Add to dependencies.
+(require 'cl-lib)
 
 (defgroup ammo nil
   ""
