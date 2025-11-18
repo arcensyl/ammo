@@ -20,16 +20,28 @@
   :group 'convenience
   :prefix "ammo-")
 
+(defcustom ammo-log-level 0 "")
+
 (defvar ammo--triggers (make-hash-table :test #'eq))
 
 (cl-defstruct ammo--trigger
+  (name nil :type symbol)
   (active-state nil :type boolean)
   (logic 'and :type symbol)
   (conditions '() :type list)
   (activate-fn nil :type function)
   (deactivate-fn nil :type function))
 
+(defun ammo--log (level message &rest args)
+  (unless (integerp level)
+    (setq level 0))
+
+  (when (<= level ammo-log-level)
+    (apply #'message (concat "[Ammo] " message) args)))
+
 (cl-defun ammo--check-conditions (trigger)
+  (ammo--log 1 "Checking conditions of trigger '%s'..." (ammo--trigger-name trigger))
+  
   (unless (ammo--trigger-conditions trigger)
     (cl-return t))
   
@@ -55,8 +67,8 @@
   
   (when-let ((actual-trigger (gethash trigger ammo--triggers)))
     (if (ammo--check-conditions actual-trigger)
-        (message "The conditions of trigger '%s' are met!" trigger)
-      (message "The conditions of trigger '%s' are not met!" trigger))))
+        (ammo--log 0 "The conditions of trigger '%s' are met!" trigger)
+      (ammo--log 0 "The conditions of trigger '%s' are not met!" trigger))))
 
 (provide 'ammo)
 ;;; ammo.el ends here
